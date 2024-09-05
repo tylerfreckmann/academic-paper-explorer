@@ -17,11 +17,14 @@ for year in YEARS:
     response = requests.get(BASE_URL + year)
     soup = BeautifulSoup(response.content, 'lxml')
     # Paper link format: BASE_URL/{year}/hash/{hash}-Abstract-Conference.html
-    paper_hashes = [li.a.get('href').split('/')[-1].split('-')[0] for li in soup.select('.paper-list > li')]
-    for hash in paper_hashes:
-        pdf_file_name = hash + '-Paper-Conference.pdf'
-        file_path = PAPER_PDF_DIRECTORY + '/' + year + '/' + pdf_file_name
-        pdf_url = BASE_URL + year + '/file/' + pdf_file_name
+    paper_list = [li.a for li in soup.select('.paper-list > li')]
+    for a in paper_list[:10]:
+        paper_name = a.string
+        paper_link_components = a.get('href').split('/')[-1].split('-')
+        paper_hash = paper_link_components[0]
+        paper_suffix = paper_link_components[2].split('.')[0]
+        file_path = PAPER_PDF_DIRECTORY + '/' + year + '/' + paper_name + '.pdf'
+        pdf_url = BASE_URL + year + '/file/' + paper_hash + '-Paper-' + paper_suffix + '.pdf'
         try:
             response = requests.get(pdf_url)
             response.raise_for_status()
