@@ -2,16 +2,18 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import pymupdf
 import requests
+from tqdm import tqdm
 
 BASE_URL = 'https://papers.nips.cc/paper_files/paper/'
 
 papers = []
 for year in range(1987, 2024):
+    print(f"---- PROCESSING YEAR {year} ----")
     response = requests.get(BASE_URL + str(year))
     soup = BeautifulSoup(response.content, 'lxml')
     # Paper link format: BASE_URL/{year}/hash/{hash}-Abstract-Conference.html
     paper_list = soup.find_all('a', title='paper title')
-    for a in paper_list[:10]:
+    for a in tqdm(paper_list):
         paper = {}
         paper['year'] = year
         paper['name'] = a.string
