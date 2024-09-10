@@ -14,7 +14,7 @@ All papers from 1987-2023 have been downloaded and stored in a CSV file on AWS S
 
 [paper-scraper.py](https://github.com/tylerfreckmann/academic-paper-explorer/blob/main/paper-scraper.py) scrapes this data from the [NeurIPS Conference Proceedings website](https://papers.nips.cc/).
 
-For years <= 2019, the conference website provides a _metadata_ link for each paper that contains the paper's full text in a JSON object.
+For years <= 2019, the conference website provides a `metadata.json` link for each paper that contains the paper's full text in a JSON object.
 
 For years >= 2020, only the paper PDFs are provided, so `paper-scraper.py` downloads the PDFs and uses [PyMuPDF](https://pymupdf.readthedocs.io/en/latest/index.html) to convert the PDFs into plain text.
 
@@ -22,11 +22,7 @@ Once all papers have been downloaded and processed, they are stored in a Pandas 
 
 ### The Data File
 
-> [!NOTE]
-> The data CSV file is ~1 GB in size and may take some time to download.
-> The compressed data CSV file is ~300 MB.
-
-The data is stored in an AWS S3 bucket. You can download a CSV version of the data or a compressed CSV at the following links:
+The data is stored in an AWS S3 bucket. You can download a CSV version of the data or a compressed CSV at the following links _(but please note the size of data before downloading)_.
 
  - [papers.csv](https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv) ~1 GB
  - [papers.csv.gzip](https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv.gz) ~300MB
