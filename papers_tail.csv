@@ -1,5 +1,5 @@
-Unnamed: 0,year,name,text
-20281,2023,Optimal testing using combined test statistics across independent studies,"Optimal testing using combined test statistics across
+year,name,text
+2023,Optimal testing using combined test statistics across independent studies,"Optimal testing using combined test statistics across
 independent studies
 Lasse Vuursteen⇤
 Delft Institute of Applied Mathematics
@@ -819,7 +819,7 @@ Neural Information Processing Systems 26 (2013).
 constraints. In International Conference on Machine Learning (2018), PMLR, pp. 6009–6017.
 13
 "
-20282,2023,Regret-Optimal Model-Free Reinforcement Learning for Discounted MDPs with Short Burn-In Time,"Regret-Optimal Model-Free Reinforcement Learning
+2023,Regret-Optimal Model-Free Reinforcement Learning for Discounted MDPs with Short Burn-In Time,"Regret-Optimal Model-Free Reinforcement Learning
 for Discounted MDPs with Short Burn-In Time
 Xiang Ji ∗
 Princeton
@@ -1405,7 +1405,7 @@ n3/4(1−γ)2 ;
 QR(st, at) ←
 (1 −ηn)QR(st, at) + ηn
 "
-20283,2023,Convolutional State Space Models for Long-Range Spatiotemporal Modeling,"Convolutional State Space Models for
+2023,Convolutional State Space Models for Long-Range Spatiotemporal Modeling,"Convolutional State Space Models for
 Long-Range Spatiotemporal Modeling
 Jimmy T.H. Smith*,2,4, Shalini De Mello1, Jan Kautz1, Scott W. Linderman3, 4, Wonmin Byeon1
 1NVIDIA, *Work performed during internship at NVIDIA
@@ -5942,7 +5942,7 @@ Proposition 2. Given the effective inputs B ∗U1:L ∈RL×H×W ×P and a pointw
 A ∈RP ×P ×1×1, the computational cost of computing the convolutional recurrence in Equation 7
 with a parallel scan is O
 "
-20284,2023,"CRoSS: Diffusion Model Makes Controllable, Robust and Secure Image Steganography","CRoSS: Diffusion Model Makes
+2023,"CRoSS: Diffusion Model Makes Controllable, Robust and Secure Image Steganography","CRoSS: Diffusion Model Makes
 Controllable, Robust and Secure Image Steganography
 Jiwen Yu1
 Xuanyu Zhang1
@@ -6844,7 +6844,7 @@ translation using cycle-consistent adversarial networks. In Proceedings of the I
 Conference on Computer Vision (ICCV), 2017.
 14
 "
-20285,2023,American Stories: A Large-Scale Structured Text Dataset of Historical U.S. Newspapers,"American Stories: A Large-Scale Structured Text
+2023,American Stories: A Large-Scale Structured Text Dataset of Historical U.S. Newspapers,"American Stories: A Large-Scale Structured Text
 Dataset of Historical U.S. Newspapers
 Melissa Dell1,2∗, Jacob Carlson1, Tom Bryan1, Emily Silcock1, Abhishek Arora1, Zejiang Shen3,
 Luca D’Amico-Wong1, Quan Le4, Pablo Querubin2,5, Leander Heldring6
