@@ -26,3 +26,11 @@ The data is stored in an AWS S3 bucket. You can download a CSV version of the da
 
  - `papers.csv` ~1GB : https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv
  - `papers.csv.gzip` ~300MB : https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv.gz
+
+## Next Steps
+
+The next steps for this project include more feature engineering like creating columns for the papers' abstracts, authors, and potentially citations. Additionally, it may be helpful to further "chunk" the papers into their different sections.
+
+After that, Generative AI and NLP techniques will be applied to the collection of papers to make them easier to explore. Techniques will include Retrieval-Augmented Generation in a Q&A bot, search, and paper suggestions via semantic similarity analysis.
+
+Stay tuned for more!
