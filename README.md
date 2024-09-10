@@ -24,5 +24,5 @@ Once all papers have been downloaded and processed, they are stored in a Pandas 
 
 The data is stored in an AWS S3 bucket. You can download a CSV version of the data or a compressed CSV at the following links _(but please note the size of data before downloading)_.
 
- - `papers.csv`: https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv ~1 GB
- - `papers.csv.gzip`: https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv.gz ~300MB
+ - `papers.csv` ~1GB : https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv
+ - `papers.csv.gzip` ~300MB : https://academic-paper-explorer.s3.us-east-2.amazonaws.com/papers.csv.gz
