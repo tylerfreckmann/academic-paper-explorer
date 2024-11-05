@@ -35,7 +35,6 @@ def download_paper(pdf_url, pdf_path):
 
 def process_year(year):
     """Process all papers for a given year."""
-    print(f'---- PROCESSING YEAR {year} ----')
     year_directory = f'papers/{year}'
     if not os.path.exists(year_directory):
         os.makedirs(year_directory)
@@ -45,32 +44,37 @@ def process_year(year):
     soup = BeautifulSoup(response.content, 'lxml')
     list_of_paper_links = soup.find_all('a', title='paper title')
 
-    tasks = []
-    with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
-        for a in tqdm(list_of_paper_links, desc=f'Downloading {year} papers', unit='paper'):
-            paper_link_components = a.get('href').split('/')[-1].split('-')
-            paper_hash = paper_link_components[0]
-            paper_link_base_url = BASE_URL + str(year) + '/file/' + paper_hash
+    with tqdm(list_of_paper_links, desc=f'Downloading {year} papers', unit='paper') as pbar:
+        with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
+            tasks = []
 
-            # Construct the PDF URL and filename
-            if year >= 2022:
-                paper_suffix = paper_link_components[2].split('.')[0]
-                pdf_url = f"{paper_link_base_url}-Paper-{paper_suffix}.pdf"
-                pdf_filename = f"{paper_hash}-Paper-{paper_suffix}.pdf"
-            else:
-                pdf_url = f"{paper_link_base_url}-Paper.pdf"
-                pdf_filename = f"{paper_hash}-Paper.pdf"
+            for a in list_of_paper_links:
+                paper_link_components = a.get('href').split('/')[-1].split('-')
+                paper_hash = paper_link_components[0]
+                paper_link_base_url = BASE_URL + str(year) + '/file/' + paper_hash
 
-            pdf_path = os.path.join(year_directory, pdf_filename)
+                # Construct the PDF URL and filename
+                if year >= 2022:
+                    paper_suffix = paper_link_components[2].split('.')[0]
+                    pdf_url = f"{paper_link_base_url}-Paper-{paper_suffix}.pdf"
+                    pdf_filename = f"{paper_hash}-Paper-{paper_suffix}.pdf"
+                else:
+                    pdf_url = f"{paper_link_base_url}-Paper.pdf"
+                    pdf_filename = f"{paper_hash}-Paper.pdf"
 
-            # If the paper hasn't been downloaded, schedule it for download
-            if not os.path.exists(pdf_path):
-                task = executor.submit(download_paper, pdf_url, pdf_path)
-                tasks.append(task)
+                pdf_path = os.path.join(year_directory, pdf_filename)
 
-        # Wait for all downloads to complete
-        for task in as_completed(tasks):
-            task.result()  # Handle any exceptions raised during download
+                # If the paper hasn't been downloaded, schedule it for download
+                if not os.path.exists(pdf_path):
+                    task = executor.submit(download_paper, pdf_url, pdf_path)
+                    tasks.append(task)
+                else:
+                    pbar.update()
+            
+            # Wait for all downloads to complete
+            for task in as_completed(tasks):
+                pbar.update()
+                task.result()  # Handle any exceptions raised during download
 
 def main():
     for year in range(1987, 2024):
