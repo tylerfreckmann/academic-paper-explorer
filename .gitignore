@@ -4,3 +4,4 @@ papers.csv*
 *.pdf
 !project_proposal.pdf
 paper_download.log
+data-exploration/*.csv
