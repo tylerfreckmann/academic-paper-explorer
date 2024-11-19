@@ -1,7 +1,8 @@
 .python-version
 .vscode
-papers.csv*
+*.csv*
+!papers_tail.csv
 *.pdf
 !project_proposal.pdf
 paper_download.log
-data-exploration/*.csv
+data_exploration/*.csv
